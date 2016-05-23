@@ -92,18 +92,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
 
         if (magValues != null && accValues != null){
-            float R[] = new float[16];
+            float R[] = new float[9];
             float I[] = new float[9];
 
-            boolean success = SensorManager.getRotationMatrix(R,null,accValues,magValues);
+            boolean success = SensorManager.getRotationMatrix(R,I,accValues,magValues);
             if (success){
                 float[] orientation = new float[3];
                 SensorManager.getOrientation(R, orientation);
 
-                double angleZ = orientation[0] * (180 / (float) Math.PI);
+                double angleZ = Math.toDegrees(orientation[0]);
+                angleZ = (angleZ + 360) % 360;//converting from -180,180 to 0,360
                 double angleX = Math.toDegrees(orientation[1]);
                 double angleY = Math.toDegrees(orientation[2]);
-
                 magAngleZ.setText("z="+String.valueOf(angleZ));
                 magAngleX.setText("x=" + String.valueOf(angleX));
                 magAngleY.setText("y=" + String.valueOf(angleY));

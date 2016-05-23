@@ -21,7 +21,7 @@
         gauge:pointStartColor="@color/Red"
         gauge:pointEndColor="@color/Red"
         gauge:pointSize="6"
-        gauge:startAngel="0"
+        gauge:startAngel="270"
         gauge:strokeCap="ROUND"
         gauge:strokeColor="@color/Gray"
         gauge:strokeWidth="10dp"
